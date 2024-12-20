@@ -1,0 +1,23 @@
+class Solution {
+    // Function is to check whether two strings are anagram of each other or not.
+    public static boolean areAnagrams(String s1, String s2) {
+
+        // Your code here
+        
+        HashMap<Character,Integer> map=new HashMap<>();
+        
+        for(char i : s1.toCharArray()){
+            map.put(i,map.getOrDefault(i,0)+1);
+        }
+        for(char i : s2.toCharArray()){
+            map.put(i,map.getOrDefault(i,0)-1);
+        }
+        
+        for(int val: map.values()){
+            if(val!=0){
+                return false;
+            }
+        }
+        return true;
+    }
+}
