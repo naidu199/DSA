@@ -13,3 +13,17 @@ class Solution {
         
     }
 }
+
+
+class Solution {
+    static Node constructLL(int arr[]) {
+        // code here
+        Node node=new Node(arr[0]);
+        Node head=node;
+        for(int i=1;i<arr.length;i++){
+            node.next=new Node(arr[i]);
+            node=node.next;
+        }
+        return head;
+    }
+}
