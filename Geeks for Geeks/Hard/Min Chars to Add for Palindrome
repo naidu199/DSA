@@ -1,0 +1,44 @@
+class Solution {
+    public static int minChar(String s) {
+        // Write your code here
+        
+        String rev=new StringBuilder(s).reverse().toString();
+        int n=s.length();
+        int l=lps(s+'$'+rev);
+        return n-l;
+    }
+    
+    public static int lps(String s){
+        int len=0;
+        int i=1;
+        int n=s.length();
+        int[] lps=new int[n];
+        lps[0]=0;
+        while(i<n){
+            if(s.charAt(i)==s.charAt(len)){
+                len++;
+                lps[i]=len;
+                i++;
+            }
+            else{
+                
+                if(len!=0){
+                    len=lps[len-1];
+                }else{
+                    lps[i]=0;
+                    i++;
+                }
+            }
+        }
+        
+        return lps[i-1];
+        
+    }
+    public static String reverse(String s){
+        String rev="";
+        for(int i=s.length()-1;i>=0;i--){
+            rev+=s.charAt(i);
+        }
+        return rev;
+    }
+}
