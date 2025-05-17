@@ -1,3 +1,25 @@
+//simulation based
+
+class Solution {
+    public int countCollisions(String directions) {
+        int c=0,n=directions.length();
+        char[] arr=directions.toCharArray();
+        int l=0,r=n-1;
+        while (l < n && arr[l] == 'L') l++;
+
+        while (r >= 0 && arr[r] == 'R') r--;
+
+        while(l<=r){
+            if(arr[l]!='S'){
+                c++;
+                
+            }
+            l++;
+        }
+        return c;
+    }
+}
+
 //stack based 
 
 class Solution {
