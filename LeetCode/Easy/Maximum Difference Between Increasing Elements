@@ -1,0 +1,24 @@
+class Solution {
+    public int maximumDifference(int[] nums) {
+        int maxi=0;
+        int ans=-1;
+        for(int i=0;i<nums.length-1;i++){
+            maxi= i<maxi?maxi:maxIdx(i+1,nums);
+            if(nums[maxi]-nums[i]>ans){
+                ans=nums[maxi]-nums[i];
+            }
+        }
+        return ans==0?-1:ans;
+    }
+    public int maxIdx(int idx, int[] arr){
+        int val=idx;
+        int max=arr[idx];
+        for(int i=idx+1;i<arr.length;i++){
+            if(arr[i]>max){
+                max=arr[i];
+                val=i;
+            }
+        }
+        return val;
+    }
+}
