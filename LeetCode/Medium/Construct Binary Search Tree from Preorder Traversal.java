@@ -45,3 +45,22 @@ class Solution {
         return root;
     }
 }
+// O(N)
+
+
+class Solution {
+    public TreeNode bstFromPreorder(int[] preorder) {
+        return bst(preorder,Integer.MAX_VALUE,new int[]{0});
+    }
+
+    public TreeNode bst(int[] arr,int ub,int[] i){
+        if(arr.length==i[0]||arr[i[0]]>ub) return null;
+
+        TreeNode root=new TreeNode(arr[i[0]++]);
+
+        root.left=bst(arr,root.val,i);
+        root.right=bst(arr,ub,i);
+
+        return root;
+    }
+}
