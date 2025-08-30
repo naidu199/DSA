@@ -18,11 +18,29 @@ class Solution {
         
         for(int i=0;i<V;i++){
             if(!visited[i]){
-                if(isCycleExist(i,visited,adj)){
+                if(isCycleDFS(i,-1,visited,adj)){
                     return true;
                 }
             }
         }
+        return false;
+    }
+    
+    
+    public boolean isCycleDFS(int node,int parent,boolean[] visited,
+    ArrayList<ArrayList<Integer>> adj){
+        visited[node]=true;
+        
+        for(int adjN:adj.get(node)){
+            if(!visited[adjN]){
+                if(isCycleDFS(adjN,node,visited,adj)){
+                return true;
+                }
+            }else if(parent!=adjN){
+                return true;
+            }
+        }
+        
         return false;
     }
     
